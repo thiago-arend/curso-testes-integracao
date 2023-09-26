@@ -3,15 +3,11 @@ import supertest from "supertest";
 
 const server = supertest(app);
 
-describe("GET /health", () => {
+describe("API tests", () => {
 
-    it("expects status code to be 200", async () => {
+    it("should return status 200 and response 'OK!' at GET /health", async () => {
         const result = await server.get("/health");
         expect(result.statusCode).toBe(200);
-    });
-
-    it("expects response message to be 'OK!'", async () => {
-        const result = await server.get("/health");
         expect(result.text).toBe("OK!");
     });
 });
