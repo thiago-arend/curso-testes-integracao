@@ -51,10 +51,7 @@ describe("GET /users tests", () => {
 
     const { status, body } = await api.get(`/users/${user.id}`);
     expect(status).toBe(200);
-    expect(body).toEqual({
-      ...userData,
-      id: user.id
-    })
+    expect(body).toEqual(user)
   });
 
   it("should return 404 when can't find a user by id", async () => {
@@ -64,7 +61,7 @@ describe("GET /users tests", () => {
   });
 
   it("should return all users", async () => {
-    
+
     await api.post("/users").send({
       email: "thiago@gmail.com",
       password: "123456"
